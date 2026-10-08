@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple newspaper-crossword icon: 3x3 grid with black blocks. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp" android:viewportWidth="48" android:viewportHeight="48">
+    <path android:fillColor="#FBF8F1" android:pathData="M2,2h44v44h-44z" />
+    <path android:fillColor="#000000" android:pathData="M17,2h14v15h-14z M2,31h15v15h-15z M31,31h15v15h-15z" />
+    <path android:strokeColor="#000000" android:strokeWidth="2"
+        android:pathData="M2,2h44v44h-44z M17,2v44 M31,2v44 M2,17h44 M2,31h44" />
+</vector>

@@ -1,0 +1,32 @@
+name: Build APK
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: android-actions/setup-android@v3
+      - name: Validate 100 puzzles
+        run: python3 tools/gen_puzzles.py --check
+      - name: Unit tests (solve all levels with the in-app keyboard)
+        run: ./gradlew --no-daemon testDebugUnitTest
+      - name: Build debug and release APK
+        run: ./gradlew --no-daemon assembleDebug assembleRelease
+      - name: Check no INTERNET permission
+        run: |
+          AAPT=$(ls $ANDROID_HOME/build-tools/*/aapt | tail -1)
+          ! $AAPT dump permissions app/build/outputs/apk/release/app-release.apk | grep -i internet
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hindi-varg-paheli-apk
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/release/app-release.apk
