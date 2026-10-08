@@ -43,7 +43,7 @@ class MainActivity : Activity() {
         if (last in 1..TOTAL && last !in done) {
             root.addView(Style.button(this, "जारी रखें — पहेली ${"%02d".format(last)}", 20f).apply {
                 setOnClickListener { open(last) }
-            }, LinearLayout.LayoutParams(-1, Style.dp(this, 52f).toInt()).apply { bottomMargin = Style.dp(context, 12f).toInt() })
+            }, LinearLayout.LayoutParams(-1, Style.dp(this, 52f).toInt()).apply { bottomMargin = Style.dp(this@MainActivity, 12f).toInt() })
         }
 
         val gap = Style.dp(this, 6f).toInt()

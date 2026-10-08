@@ -72,7 +72,8 @@ class PuzzleActivity : Activity() {
         bar.addView(clueBar, LinearLayout.LayoutParams(0, -2, 1f))
         bar.addView(Style.button(this, "▶", 20f).apply { setOnClickListener { engine.nextWord(1); refresh(true) } },
             LinearLayout.LayoutParams(dp(48f), -1))
-        root.addView(bar, LinearLayout.LayoutParams(-1, -2).apply { minimumHeight = dp(56f) })
+        bar.minimumHeight = dp(56f)
+        root.addView(bar, LinearLayout.LayoutParams(-1, -2))
 
         // Keyboard height adapts to the screen so the grid stays visible on small phones.
         val hDp = resources.displayMetrics.heightPixels / resources.displayMetrics.density
